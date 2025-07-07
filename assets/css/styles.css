@@ -1,0 +1,59 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.gradient-bg {
+    background-image: radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.08), transparent 40%);
+}
+
+.tech-logo {
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+/* .dark .tech-logo {
+    filter: invert(1) grayscale(1) brightness(1.5);
+} */
+.dark .group:hover .tech-logo {
+    filter: none;
+}
+
+[x-cloak] { display: none !important; }
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lang-btn {
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.lang-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.lang-btn.active-lang {
+    opacity: 1;
+    border-color: #3B82F6; /* Un color azul para destacar */
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+.dark .lang-btn.active-lang {
+    border-color: #60A5FA; /* Un azul más claro para el modo oscuro */
+     box-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+}
+
+.lang-btn svg {
+    display: block;
+    border-radius: 9999px;
+}
