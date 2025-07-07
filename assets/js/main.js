@@ -1,3 +1,62 @@
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+// Ajustar el tamaño del canvas al de la ventana
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Símbolos de programación para la lluvia
+const chars = "01;{}[]()=>.<,$:&'!";
+const charArray = chars.split('');
+
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+// Array para almacenar la posición 'y' de cada gota de lluvia
+const drops = [];
+for (let x = 0; x < columns; x++) {
+    drops[x] = 1;
+}
+
+function draw() {
+    // Fondo semi-transparente para crear el efecto de estela
+    ctx.fillStyle = 'rgba(17, 24, 39, 0.05)'; // Usamos el color de fondo oscuro
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Color de los caracteres de la lluvia
+    // Se adapta al tema claro/oscuro
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    ctx.fillStyle = isDarkMode ? '#2dd4bf' : '#0f7fff'; // Verde azulado para oscuro, celeste para claro
+    ctx.font = `${fontSize}px monospace`;
+
+    // Dibujar cada gota
+    for (let i = 0; i < drops.length; i++) {
+        const text = charArray[Math.floor(Math.random() * charArray.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // Resetear la gota al principio de forma aleatoria para que no sea uniforme
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+
+        // Incrementar la posición 'y'
+        drops[i]++;
+    }
+}
+
+// Iniciar la animación
+const animationInterval = setInterval(draw, 40);
+
+// Ajustar el canvas si la ventana cambia de tamaño
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    // Reiniciar las gotas para el nuevo tamaño
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA DE ANIMACIÓN DE SCROLL ---
     const observer = new IntersectionObserver((entries) => {
