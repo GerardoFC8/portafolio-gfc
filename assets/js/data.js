@@ -96,14 +96,14 @@ function portfolioData() {
                 ]
             },
             {
-                title: 'DEMO',
-                description: '--',
-                image: 'https://placehold.co/600x400/1F2937/E5E7EB?text=DEMO',
-                tags: ['React', 'Node.js'],
+                title: 'VueCommerce PWA',
+                description: 'Vue-Commerce PWA es un proyecto moderno, rápido y funcional, desarrollado con Vue.js 3 y Vite. Su principal característica es su arquitectura de aplicación web progresiva (PWA), que permite su instalación, funcionamiento sin conexión y una experiencia de usuario similar a la de una aplicación nativa.',
+                image: 'assets/images/VueCommerce.png',
+                tags: ['Vue.js', 'Vite', 'Tailwind', 'PWA'],
                 galleryImages: [
-                    'https://placehold.co/600x400/1F2937/E5E7EB?text=DEMO',
-                    'https://placehold.co/600x400/1F2937/E5E7EB?text=DEMO2',
-                    'https://placehold.co/600x400/1F2937/E5E7EB?text=DEMO3'
+                    'assets/images/VueCommerce.png',
+                    'assets/images/VueCommerce-product.png',
+                    'assets/images/VueCommerce-cart.png'
                 ]
             }
         ],
