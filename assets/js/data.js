@@ -83,7 +83,8 @@ function portfolioData() {
                     'assets/images/Vista cotizaciones.png',
                     'assets/images/Vista cotizaciones agenda.png',
                     'https://placehold.co/600x400/1F2937/E5E7EB?text=MORE...',
-                ]
+                ],
+                github: null
             },
             {
                 title: 'Focus Control - Gestor Personal',
@@ -93,7 +94,8 @@ function portfolioData() {
                 galleryImages: [
                     'assets/images/FocusControl.png',
                     'https://placehold.co/800x600/1F2937/E5E7EB?text=Focus+Control+2'
-                ]
+                ],
+                github: null
             },
             {
                 title: 'VueCommerce PWA',
@@ -104,7 +106,8 @@ function portfolioData() {
                     'assets/images/VueCommerce.png',
                     'assets/images/VueCommerce-product.png',
                     'assets/images/VueCommerce-cart.png'
-                ]
+                ],
+                github: 'https://github.com/GerardoFC8/vue-commerce-pwa'
             }
         ],
 
