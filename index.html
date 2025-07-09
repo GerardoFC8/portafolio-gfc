@@ -11,184 +11,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-key="page_title">Portafolio | Gerardo Franco | Desarrollador Full-Stack</title>
+    <script src="assets/js/data.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+        tailwind.config = { darkMode: 'class' }
     </script>
 
+    <!-- Fuentes y Estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/images/logo-gfc.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="gradient-bg bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+<body class="gradient-bg bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
 
     <canvas id="matrix-canvas"></canvas>
 
-    <div class="content-wrapper"></div>
+    <div class="content-wrapper" x-data="portfolioData()">
         <!-- Header y Navegación -->
-        <header class="bg-white/80 dark:bg-gray-900/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-50" x-data="{ isMenuOpen: false }">
+        <header class="bg-white/80 dark:bg-gray-900/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-40" x-data="{ isMenuOpen: false }">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <a href="#hero" class="text-2xl font-bold text-gray-900 dark:text-white">
                     <img src="assets/logos/logo-gfc.jpg" alt="Logo de Gerardo Franco" class="h-8 inline-block">
                 </a>
-
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#tecnologias" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition" data-key="nav_tech">Tecnologías</a>
-                    <a href="#experiencia" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition" data-key="nav_exp">Experiencia</a>
-                    <a href="#proyectos" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition" data-key="nav_projects">Proyectos</a>
-                    <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition" data-key="nav_contact">Contacto</a>
-
-                    <!-- Selector de Idioma -->
-                    <!-- <div class="flex items-center space-x-2 ml-4">
-                        <button id="lang-es" class="lang-btn p-1 rounded-full">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 3 2"><path fill="#FCD116" d="M0 0h3v2H0z"/><path fill="#C8102E" d="M0 0h3v.5H0zm0 1.5h3V2H0z"/></svg>
-                        </button>
-                        <button id="lang-en" class="lang-btn p-1 rounded-full">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 60 30"><path fill="#012169" d="M0 0h60v30H0z"/><path fill="#FFF" d="M0 0l60 30m0-30L0 30"/><path fill="#C8102E" stroke="#FFF" stroke-width="2" d="M0 0l60 30m0-30L0 30"/><path fill="#FFF" d="M30 0v30M0 15h60"/><path fill="#C8102E" stroke="#FFF" stroke-width="2" d="M30 0v30M0 15h60"/></svg>
-                        </button>
-                    </div> -->
-
-                    <!-- Botón de cambio de tema -->
+                    <a href="#tecnologias" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Tecnologías</a>
+                    <a href="#experiencia" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Experiencia</a>
+                    <a href="#proyectos" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Proyectos</a>
+                    <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition">Contacto</a>
                     <button @click="darkMode = !darkMode" class="text-gray-600 dark:text-gray-300 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                         <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                         <svg x-show="darkMode" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                     </button>
                 </nav>
-
-                <!-- Botón Menú Móvil -->
                 <button @click="isMenuOpen = !isMenuOpen" class="md:hidden text-gray-800 dark:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
-
-            <!-- Menú desplegable móvil -->
             <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" class="md:hidden bg-white dark:bg-gray-800 py-4 shadow-lg">
                 <nav class="flex flex-col items-center space-y-4">
-                    <a href="#tecnologias" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2" data-key="nav_tech_mobile">Tecnologías</a>
-                    <a href="#experiencia" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2" data-key="nav_exp_mobile">Experiencia</a>
-                    <a href="#proyectos" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2" data-key="nav_projects_mobile">Proyectos</a>
-                    <a href="#contacto" @click="isMenuOpen=false" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg" data-key="nav_contact_mobile">Contacto</a>
+                    <a href="#tecnologias" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Tecnologías</a>
+                    <a href="#experiencia" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Experiencia</a>
+                    <a href="#proyectos" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Proyectos</a>
+                    <a href="#contacto" @click="isMenuOpen=false" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">Contacto</a>
                 </nav>
             </div>
         </header>
 
         <main class="container mx-auto px-6 pt-24 md:pt-32">
-
             <!-- Sección Hero -->
             <section id="hero" class="text-center min-h-[60vh] flex flex-col justify-center items-center fade-in-up">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
-                    <span data-key="hero_greeting">Hola, soy</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Gerardo Franco</span>
+                    <span>Hola, soy</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Gerardo Franco</span>
                 </h1>
-                <p class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl" data-key="hero_subtitle">
+                <p class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl">
                     Desarrollador Full-Stack que construye soluciones a medida, desde complejos sistemas de gestión empresarial (ERP) hasta aplicaciones completamente personalizadas. 
                     <br>
                     Mi enfoque es crear software que no solo funcione, sino que también sea intuitivo y eficiente.
                 </p>
                 <div class="mt-8 flex flex-wrap justify-center gap-4">
-                    <a href="#proyectos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105" data-key="hero_button_projects">Ver mis Proyectos</a>
-                    <a href="assets/pdf/CV-Gerardo Manuel Franco Cruz.pdf" target="_blank" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105" data-key="hero_button_cv">Descargar CV</a>
+                    <a href="#proyectos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105">Ver mis Proyectos</a>
+                    <a href="assets/pdf/CV-Gerardo Manuel Franco Cruz.pdf" target="_blank" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-transform transform hover:scale-105">Descargar CV</a>
                 </div>
             </section>
 
             <!-- Sección Tecnologías -->
             <section id="tecnologias" class="py-16 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12" data-key="tech_title">Tecnologías que Domino</h2>
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Tecnologías que Domino</h2>
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                    <!-- Logos... -->
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-laravel.svg" alt="Logo de Laravel" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Laravel</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-php.svg" alt="Logo de PHP" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">PHP</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-alpine.svg" alt="Logo de Alpine" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Alpine</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-livewire.svg" alt="Logo de Livewire" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Livewire</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-tailwind.svg" alt="Logo de Tailwind" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Tailwind</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-docker.svg" alt="Logo de Docker" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Docker</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-mysql.svg" alt="Logo de MySQL" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">MySQL</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-linux.svg" alt="Logo de Linux" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Linux</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-git.svg" alt="Logo de Git" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Git</p>
-                    </div>
+                    <template x-for="tech in technologies" :key="tech.name">
+                        <div class="text-center group">
+                            <img :src="tech.logo" :alt="'Logo de ' + tech.name" class="h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
+                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" x-text="tech.name"></p>
+                        </div>
+                    </template>
                 </div>
             </section>
 
+            <!-- Sección Conocimientos -->
             <section class="py-16 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12" data-key="knowledge_title">Conocimientos en</h2>
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Conocimientos en</h2>
                 <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                    <!-- Logos... -->
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-vue.svg" alt="Logo de Vue.js" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Vue.js</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-nodejs.svg" alt="Logo de Node JS" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Node JS</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-python.svg" alt="Logo de Python" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Python</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-sqlserver.svg" alt="Logo de SQL Server" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">SQL Server</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-react.svg" alt="Logo de React" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">React</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-json.svg" alt="Logo de JSON" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">JSON</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-google-cloud.svg" alt="Logo de Google Cloud" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Google Cloud</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-aws.svg" alt="Logo de AWS" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">AWS</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-django.svg" alt="Logo de Django" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Django</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-java.svg" alt="Logo de Java" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Java</p>
-                    </div>
-                    <div class="text-center group">
-                        <img src="assets/logos/logo-kotlin.svg" alt="Logo de Kotlin" class="tech-logo h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Kotlin</p>
-                    </div>
+                    <template x-for="skill in knowledge" :key="skill.name">
+                        <div class="text-center group">
+                            <img :src="skill.logo" :alt="'Logo de ' + skill.name" class="h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110" :class="{ 'tech-logo': skill.isDarkInvert }">
+                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" x-text="skill.name"></p>
+                        </div>
+                    </template>
                 </div>
             </section>
 
@@ -197,133 +110,69 @@
                 <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Experiencia Laboral</h2>
                 <div class="max-w-3xl mx-auto space-y-10 relative">
                     <div class="absolute left-4 top-4 h-full w-0.5 bg-gray-300 dark:bg-gray-700"></div>
-                    
-                    <div class="pl-12 relative">
-                        <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
-                        <p class="text-sm text-blue-600 dark:text-blue-400 font-semibold">Oct 2023 - Actualidad</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1">Programador web Laravel en OR Maquinarias SAC</h3>
-                        <ul class="mt-2 text-gray-600 dark:text-gray-300 list-disc list-inside space-y-1">
-                            <li>Migración de sistema de escritorio a versión web con Laravel, mejorando funcionalidades.</li>
-                            <li>Desarrollo de procesos de lectura y validación de datos entre SQL Server y MySQL.</li>
-                            <li>Construcción de módulos a medida: Cotizaciones, Logística, Control de Equipos y Valorizaciones.</li>
-                            <li>Gestión de servidores locales y despliegue en servidor Ubuntu con Apache.</li>
-                        </ul>
-                    </div>
-
-                    <div class="pl-12 relative">
-                        <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">May 2023 - Jul 2023</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1">Desarrollador React y Laravel en Luca</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">
-                            Implementación de APIs creadas en Laravel (Registro, Login, CRUDs) en un proyecto con React.
-                        </p>
-                    </div>
-
-                    <div class="pl-12 relative">
-                        <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Mar 2023 - Abr 2023</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1">Desarrollador Laravel y Vue.js en Noumbu</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">
-                            Rediseño de funcionalidades de un sistema interno, utilizando Vue.js en el frontend y Laravel en el backend.
-                        </p>
-                    </div>
-
-                    <div class="pl-12 relative">
-                        <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Sep 2022 - Dic 2022</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1">Desarrollador Laravel Junior en Devdatep Consulting</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">
-                            Creación de APIs REST con procedimientos almacenados para gestionar autenticación y CRUDs de usuarios y datos de la plataforma.
-                        </p>
-                    </div>
-
-                    <div class="pl-12 relative">
-                        <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Ago 2022 - Dic 2022</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1">Software Developer Intern en Dapp blockchain S.A.C.</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-300">
-                            Diseño de la landing page de la plataforma con WordPress y PHP puro, y diseño de la base de datos en MySQL.
-                        </p>
-                    </div>
-
+                    <template x-for="job in experience" :key="job.title">
+                        <div class="pl-12 relative">
+                            <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
+                            <p class="text-sm font-semibold" :class="job.isCurrent ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'" x-text="job.date"></p>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1" x-text="job.title"></h3>
+                            <p x-show="job.description" class="mt-2 text-gray-600 dark:text-gray-300" x-text="job.description"></p>
+                            <ul x-show="job.details && job.details.length > 0" class="mt-2 text-gray-600 dark:text-gray-300 list-disc list-inside space-y-1">
+                                <template x-for="detail in job.details" :key="detail">
+                                    <li x-text="detail"></li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
                 </div>
             </section>
 
             <!-- Sección Proyectos -->
             <section id="proyectos" class="py-16 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12" data-key="projects_title">Proyectos Destacados</h2>
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Proyectos Destacados</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <div class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-2xl rounded-lg overflow-hidden p-6 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-blue-500/20">
-                        <img src="assets/images/ORMSistema.png" alt="Imagen del Proyecto ERP" class="rounded-md mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/E5E7EB?text=Sistema+ERP';">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Sistema de Gestión de Activos (ERP)</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            ERP para la gestión de activos fijos y maquinaria pesada. Incluye módulos de compras, cotizaciones, control de equipos alquilados y valorizaciones para facturación.
-                        </p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Laravel</span>
-                            <span class="bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Livewire</span>
-                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Tailwind</span>
-                            <span class="bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Alpine.js</span>
-                            <span class="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300 text-xs font-medium px-2.5 py-0.5 rounded-full">MySQL</span>
+                    <template x-for="project in projects" :key="project.title">
+                        <div class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-2xl rounded-lg overflow-hidden p-6 flex flex-col transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-blue-500/20">
+                            <img :src="project.image" :alt="'Imagen de ' + project.title" class="rounded-md mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/E5E7EB?text=Imagen+no+disponible';">
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white" x-text="project.title"></h3>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm" x-text="project.description"></p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <template x-for="tag in project.tags" :key="tag">
+                                        <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full" x-text="tag"></span>
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="mt-6 text-right">
+                                <button @click="openModal(project)" class="inline-flex items-center text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
+                                    Ver galería
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-2xl rounded-lg overflow-hidden p-6 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-blue-500/20">
-                        <img src="assets/images/FocusControl.png" alt="Imagen del Proyecto Focus Control" class="rounded-md mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/E5E7EB?text=Focus+Control';">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Focus Control - Gestor Personal</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Aplicación de autocontrol y gestión de finanzas. Incluye módulos de Planificación, Tareas, Finanzas, Hábitos, Metas y Bienestar.
-                        </p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Laravel</span>
-                            <span class="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300 text-xs font-medium px-2.5 py-0.5 rounded-full">MySQL</span>
-                            <span class="bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Alpine.js</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-2xl rounded-lg overflow-hidden p-6 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-blue-500/20">
-                        <img src="https://placehold.co/600x400/1F2937/E5E7EB?text=DEMO" alt="Imagen del Proyecto 3" class="rounded-md mb-4 w-full h-48 object-cover">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-key="project3_title">DEMO</h3>
-                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm" data-key="project3_desc">--</p>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-300 text-xs font-medium px-2.5 py-0.5 rounded-full">React</span>
-                            <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Node.js</span>
-                        </div>
-                    </div>
-                    
+                    </template>
                 </div>
             </section>
 
             <!-- Contacto -->
             <section id="contacto" class="py-20 text-center fade-in-up">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white" data-key="contact_title">Hablemos</h2>
-                <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-key="contact_subtitle">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Hablemos</h2>
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                     Estoy disponible para oportunidades freelance o un nuevo desafío profesional. Si tienes un proyecto en mente, no dudes en contactarme.
                 </p>
-                
                 <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <a href="mailto:gerardofranco366@gmail.com" 
-                    class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto"
-                    data-key="contact_button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+                    <a href="mailto:gerardofranco366@gmail.com"
+                        class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         <span>Enviar Correo</span>
                     </a>
-                    
-                    <a href="https://api.whatsapp.com/send?phone=51958753702&text=%F0%9F%92%BB" 
-                    target="_blank" 
-                    class="inline-flex items-center justify-center bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto"
-                    data-key="contact_button_wsp">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.447-4.435-9.884-9.888-9.884-5.448 0-9.886 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.06.094-1.105 4.023 4.13-1.082.092.055z"/>
-                        </svg>
+                    <a href="https://api.whatsapp.com/send?phone=51958753702&text=%F0%9F%92%BB" target="_blank" class="inline-flex items-center justify-center bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.447-4.435-9.884-9.888-9.884-5.448 0-9.886 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.06.094-1.105 4.023 4.13-1.082.092.055z"/></svg>
                         <span>Enviar WhatsApp</span>
                     </a>
                 </div>
             </section>
-
         </main>
 
         <!-- Footer -->
@@ -333,11 +182,62 @@
                     <a href="https://github.com/GerardoFC8/" class="hover:text-blue-600 dark:hover:text-blue-400 transition">GitHub</a>
                     <a href="https://www.linkedin.com/in/gerardofc/" class="hover:text-blue-600 dark:hover:text-blue-400 transition">LinkedIn</a>
                 </div>
-                <p data-key="footer_copy">&copy; 2025 Gerardo Franco | Developer</p>
+                <p>&copy; 2025 Gerardo Franco | Developer</p>
             </div>
         </footer>
+
+        <!-- Modal de Galería de Proyectos -->
+        <div x-show="isModalOpen" x-cloak @keydown.escape.window="closeModal()" 
+            class="fixed inset-0 z-50 flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div x-show="isModalOpen" 
+                x-transition:enter="ease-out duration-300" 
+                x-transition:enter-start="opacity-0" 
+                x-transition:enter-end="opacity-100" 
+                x-transition:leave="ease-in duration-200" 
+                x-transition:leave-start="opacity-100" 
+                x-transition:leave-end="opacity-0" class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"></div>
+
+            <div x-show="isModalOpen" @click.away="closeModal()" 
+                x-transition:enter="ease-out duration-300" 
+                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" 
+                x-transition:leave="ease-in duration-200" 
+                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                class="relative w-full max-w-7xl h-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl transform transition-all">
+
+                <div class="flex items-start justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white" id="modal-title" x-text="projectTitle"></h3>
+                    <button @click="closeModal()" type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-4 md:p-6">
+                    <div class="relative h-auto bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center">
+                        <img :src="projectImages[currentImageIndex]" :alt="projectTitle + ' - Imagen ' + (currentImageIndex + 1)" class="max-w-full max-h-full object-contain duration-300 ease-in-out">
+                        <button @click="prevImage()" x-show="projectImages.length > 1"
+                            class="absolute top-1/2 left-3 -translate-y-1/2 bg-blue-500/50 text-gray-800 rounded-full p-2 hover:bg-blue-500 focus:outline-none transition">
+                            <
+                        </button>
+                        <button @click="nextImage()" x-show="projectImages.length > 1"
+                            class="absolute top-1/2 right-3 -translate-y-1/2 bg-blue-500/50 text-gray-800 rounded-full p-2 hover:bg-blue-500 focus:outline-none transition">
+                            >
+                        </button>
+                        <div x-show="projectImages.length > 1" class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                            <template x-for="(image, index) in projectImages" :key="index">
+                                <button @click="currentImageIndex = index" :class="{'bg-blue-500 scale-110': currentImageIndex === index, 'bg-blue-500/50': currentImageIndex !== index}" class="w-2.5 h-2.5 rounded-full hover:bg-white transition-all duration-300"></button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
+    <!-- Carga de Scripts -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
