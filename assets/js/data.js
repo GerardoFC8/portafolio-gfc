@@ -4,6 +4,7 @@ function portfolioData() {
         technologies: [
             { name: 'Laravel', logo: 'assets/logos/logo-laravel.svg' },
             { name: 'PHP', logo: 'assets/logos/logo-php.svg' },
+            { name: 'PHP 2', logo: 'assets/logos/logo-php.svg' },
             { name: 'Alpine', logo: 'assets/logos/logo-alpine.svg' },
             { name: 'Vue.js', logo: 'assets/logos/logo-vue.svg' },
             { name: 'Livewire', logo: 'assets/logos/logo-livewire.svg' },
