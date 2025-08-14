@@ -108,6 +108,36 @@ function portfolioData() {
                     'assets/images/VueCommerce-cart.png'
                 ],
                 github: 'https://github.com/GerardoFC8/vue-commerce-pwa'
+            },
+            {
+                title: 'FocusCript AI',
+                description: `Una aplicación web diseñada para creadores de contenido que producen resúmenes de series, películas y animes. FocusCript AI utiliza inteligencia artificial para aprender tu estilo único y automatizar la creación de tus guiones y contenido para redes sociales.
+
+Características Principales:
+- Análisis y Perfil de Estilo Personalizado:
+    > La IA analiza el contenido de tus videos de YouTube (a través de URLs) para capturar tu comportamiento, tono de humor y frases características.
+    > Crea un "perfil de estilo" único que servirá como base para todas las futuras creaciones de contenido.
+
+- Generación de Guiones Inteligente:
+    > Crea guiones sobre temas específicos, manteniendo siempre la coherencia con tu estilo personal.
+    > Permite adjuntar múltiples fuentes de información (videos, PDFs, imágenes, audios) para que la IA las analice y las incorpore en el guion final.
+
+- Optimización y Expansión de Contenido:
+    > Redes Sociales: Genera publicaciones adaptadas para TikTok, Instagram y X (Twitter) a partir del guion principal.
+    > Análisis de Guion: Ofrece sugerencias y puntos de mejora sobre el guion generado para perfeccionarlo.
+    > Contenido Corto: Extrae ideas clave y momentos impactantes, ideales para crear YouTube Shorts o TikToks.
+    > Optimización para Clics: Sugiere títulos atractivos e ideas creativas para las miniaturas de tus videos.`,
+                image: 'assets/images/FocusCript-AI.png',
+                tags: ['Laravel', 'Gemini API', 'Livewire', 'MySQL', 'Tailwind'],
+                galleryImages: [
+                    'assets/images/FocusCript-AI-1.png',
+                    'assets/images/FocusCript-AI-2.png',
+                    'assets/images/FocusCript-AI-3.png',
+                    'assets/images/FocusCript-AI-4.png',
+                    'assets/images/FocusCript-AI-5.png',
+                    'assets/images/FocusCript-AI-6.png',
+                ],
+                github: null
             }
         ],
 

@@ -138,9 +138,22 @@
                     <template x-for="project in projects" :key="project.title">
                         <div class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-2xl rounded-lg overflow-hidden p-6 flex flex-col transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-blue-500/20">
                             <img :src="project.image" :alt="'Imagen de ' + project.title" class="rounded-md mb-4 w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1F2937/E5E7EB?text=Imagen+no+disponible';">
-                            <div class="flex-grow">
+                            <div class="flex-grow" x-data="{ 
+                                    expanded: false, 
+                                    isLong: project.description.length > 250  // Definimos si la descripción es larga
+                                }">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white" x-text="project.title"></h3>
-                                <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm" x-text="project.description"></p>
+
+                                <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm whitespace-pre-wrap" 
+                                x-text="isLong && !expanded ? project.description.substring(0, 250) + '...' : project.description"></p>
+                                
+                                <button 
+                                    x-show="isLong" 
+                                    @click="expanded = !expanded" 
+                                    class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-semibold mt-2">
+                                    <span x-text="expanded ? 'Ver menos' : 'Ver más'"></span>
+                                </button>
+                                
                                 <div class="mt-4 flex flex-wrap gap-2">
                                     <template x-for="tag in project.tags" :key="tag">
                                         <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 text-xs font-medium px-2.5 py-0.5 rounded-full" x-text="tag"></span>
