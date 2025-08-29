@@ -74,6 +74,16 @@ function portfolioData() {
         // Datos para la sección "Proyectos Destacados"
         projects: [
             {
+                title: 'Laravel Eloquent Visualizer',
+                description: 'Eloquent Visualizer es una extensión para VS Code que analiza tu proyecto de Laravel y genera un gráfico interactivo de las relaciones de tus modelos. Despídete de la confusión y entiende tu base de datos de un vistazo.',
+                image: 'assets/images/imageVizuakizer1.png',
+                tags: ['TypeScript.js', 'Tailwind'],
+                galleryImages: [
+                    'assets/images/imageVizuakizer1.png',
+                ],
+                github: 'https://github.com/GerardoFC8/landing-eloquent-visualizer'
+            },
+            {
                 title: 'Sistema de Gestión de Activos (ERP)',
                 description: 'ERP para la gestión de activos fijos y maquinaria pesada. Incluye módulos de compras, cotizaciones, control de equipos alquilados y valorizaciones para facturación.',
                 image: 'assets/images/ORMSistema.png',
