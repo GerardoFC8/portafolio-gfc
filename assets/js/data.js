@@ -74,6 +74,22 @@ function portfolioData() {
         // Datos para la sección "Proyectos Destacados"
         projects: [
             {
+                title: 'Go - Acortador de URLs',
+                description: 'Go es un acortador de URLs que permite a los usuarios acortar enlaces largos y compartirlos fácilmente. La aplicación está construida con Laravel y utiliza una base de datos MySQL para almacenar las URLs acortadas.',
+                image: 'assets/images/goImage1.png',
+                tags: ['Laravel', 'MySQL', 'Tailwind', 'Alpine.js', 'Livewire'],
+                galleryImages: [
+                    'assets/images/goImage1.png',
+                    'assets/images/goImage2.png',
+                    'assets/images/goImage3.png',
+                    'assets/images/goImage4.png',
+                    'assets/images/goImage5.png',
+                    'assets/images/goImage6.png',
+                ],
+                github: null,
+                online: 'https://go.gfcode.dev/'
+            },
+            {
                 title: 'Laravel Eloquent Visualizer',
                 description: 'Eloquent Visualizer es una extensión para VS Code que analiza tu proyecto de Laravel y genera un gráfico interactivo de las relaciones de tus modelos. Despídete de la confusión y entiende tu base de datos de un vistazo.',
                 image: 'assets/images/imageVizuakizer1.png',
