@@ -20,7 +20,6 @@
         tailwind.config = { darkMode: 'class' }
     </script>
 
-    <!-- Fuentes y Estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,16 +31,15 @@
     <canvas id="matrix-canvas"></canvas>
 
     <div class="content-wrapper" x-data="portfolioData()">
-        <!-- Header y Navegación -->
         <header class="bg-white/80 dark:bg-gray-900/50 backdrop-blur-sm fixed top-0 left-0 right-0 z-40" x-data="{ isMenuOpen: false }">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <a href="#hero" class="text-2xl font-bold text-gray-900 dark:text-white">
                     <img src="assets/logos/logo-gfc.jpg" alt="Logo de Gerardo Franco" class="h-8 inline-block">
                 </a>
                 <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#proyectos" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Proyectos</a>
                     <a href="#tecnologias" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Tecnologías</a>
                     <a href="#experiencia" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Experiencia</a>
-                    <a href="#proyectos" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Proyectos</a>
                     <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition">Contacto</a>
                     <button @click="darkMode = !darkMode" class="text-gray-600 dark:text-gray-300 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                         <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
@@ -54,16 +52,15 @@
             </div>
             <div x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" class="md:hidden bg-white dark:bg-gray-800 py-4 shadow-lg">
                 <nav class="flex flex-col items-center space-y-4">
+                    <a href="#proyectos" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Proyectos</a>
                     <a href="#tecnologias" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Tecnologías</a>
                     <a href="#experiencia" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Experiencia</a>
-                    <a href="#proyectos" @click="isMenuOpen=false" class="text-gray-600 dark:text-gray-300 px-4 py-2">Proyectos</a>
                     <a href="#contacto" @click="isMenuOpen=false" class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">Contacto</a>
                 </nav>
             </div>
         </header>
 
         <main class="container mx-auto px-6">
-            <!-- Sección Hero -->
             <section id="hero" class="text-center min-h-[100vh] flex flex-col justify-center items-center fade-in-up">
                 <div class="mb-16">
                     <img src="assets/images/generate_full_code.gif" alt="Foto de perfil de Gerardo Franco" class="w-56 h-56 rounded-full mx-auto ring-4 ring-white dark:ring-gray-800 shadow-lg">
@@ -84,56 +81,8 @@
                 </div>
             </section>
 
-            <!-- Sección Tecnologías -->
-            <section id="tecnologias" class="py-16 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Tecnologías que Domino</h2>
-                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                    <template x-for="tech in technologies" :key="tech.name">
-                        <div class="text-center group">
-                            <img :src="tech.logo" :alt="'Logo de ' + tech.name" class="h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
-                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" x-text="tech.name"></p>
-                        </div>
-                    </template>
-                </div>
-            </section>
-
-            <!-- Sección Conocimientos -->
-            <section class="py-16 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Conocimientos en</h2>
-                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                    <template x-for="skill in knowledge" :key="skill.name">
-                        <div class="text-center group">
-                            <img :src="skill.logo" :alt="'Logo de ' + skill.name" class="h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110" :class="{ 'tech-logo': skill.isDarkInvert }">
-                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" x-text="skill.name"></p>
-                        </div>
-                    </template>
-                </div>
-            </section>
-
-            <!-- Sección Experiencia -->
-            <section id="experiencia" class="py-20 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Experiencia Laboral</h2>
-                <div class="max-w-3xl mx-auto space-y-10 relative">
-                    <div class="absolute left-4 top-4 h-full w-0.5 bg-gray-300 dark:bg-gray-700"></div>
-                    <template x-for="job in experience" :key="job.title">
-                        <div class="pl-12 relative">
-                            <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
-                            <p class="text-sm font-semibold" :class="job.isCurrent ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'" x-text="job.date"></p>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1" x-text="job.title"></h3>
-                            <p x-show="job.description" class="mt-2 text-gray-600 dark:text-gray-300" x-text="job.description"></p>
-                            <ul x-show="job.details && job.details.length > 0" class="mt-2 text-gray-600 dark:text-gray-300 list-disc list-inside space-y-1">
-                                <template x-for="detail in job.details" :key="detail">
-                                    <li x-text="detail"></li>
-                                </template>
-                            </ul>
-                        </div>
-                    </template>
-                </div>
-            </section>
-
-            <!-- Sección Proyectos -->
             <section id="proyectos" class="py-16 fade-in-up">
-                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Proyectos Destacados</h2>
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Proyectos</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <template x-for="project in projects" :key="project.title">
                         <div class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-2xl rounded-lg overflow-hidden p-6 flex flex-col transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-blue-500/20">
@@ -161,6 +110,14 @@
                                 </div>
                             </div>
                             <div class="mt-6 flex justify-end items-center gap-6">
+                                <template x-if="project.online">
+                                    <a :href="project.online" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                        Ver en línea
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                        </svg>
+                                    </a>
+                                </template>
                                 <template x-if="project.github">
                                     <a :href="project.github" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                         Ver GitHub
@@ -179,7 +136,50 @@
                 </div>
             </section>
 
-            <!-- Contacto -->
+            <section id="tecnologias" class="py-16 fade-in-up">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Tecnologías que Domino</h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                    <template x-for="tech in technologies" :key="tech.name">
+                        <div class="text-center group">
+                            <img :src="tech.logo" :alt="'Logo de ' + tech.name" class="h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110">
+                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" x-text="tech.name"></p>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+            <section class="py-16 fade-in-up">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Conocimientos en</h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                    <template x-for="skill in knowledge" :key="skill.name">
+                        <div class="text-center group">
+                            <img :src="skill.logo" :alt="'Logo de ' + skill.name" class="h-16 w-16 mx-auto transition-transform duration-300 group-hover:scale-110" :class="{ 'tech-logo': skill.isDarkInvert }">
+                            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400" x-text="skill.name"></p>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
+            <section id="experiencia" class="py-20 fade-in-up">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Experiencia Laboral</h2>
+                <div class="max-w-3xl mx-auto space-y-10 relative">
+                    <div class="absolute left-4 top-4 h-full w-0.5 bg-gray-300 dark:bg-gray-700"></div>
+                    <template x-for="job in experience" :key="job.title">
+                        <div class="pl-12 relative">
+                            <div class="absolute left-[11px] top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-gray-50 dark:border-gray-900"></div>
+                            <p class="text-sm font-semibold" :class="job.isCurrent ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'" x-text="job.date"></p>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-1" x-text="job.title"></h3>
+                            <p x-show="job.description" class="mt-2 text-gray-600 dark:text-gray-300" x-text="job.description"></p>
+                            <ul x-show="job.details && job.details.length > 0" class="mt-2 text-gray-600 dark:text-gray-300 list-disc list-inside space-y-1">
+                                <template x-for="detail in job.details" :key="detail">
+                                    <li x-text="detail"></li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+                </div>
+            </section>
+
             <section id="contacto" class="py-20 text-center fade-in-up">
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Hablemos</h2>
                 <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -201,7 +201,6 @@
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="bg-gray-100 dark:bg-gray-900 mt-20 border-t border-gray-200 dark:border-gray-800">
             <div class="container mx-auto px-6 py-8 text-center text-gray-500 dark:text-gray-400">
                 <div class="flex justify-center space-x-6 mb-4">
@@ -212,7 +211,6 @@
             </div>
         </footer>
 
-        <!-- Modal de Galería de Proyectos -->
         <div x-show="isModalOpen" x-cloak @keydown.escape.window="closeModal()" 
             class="fixed inset-0 z-50 flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div x-show="isModalOpen" 
@@ -263,7 +261,6 @@
         </div>
     </div>
     
-    <!-- Carga de Scripts -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>

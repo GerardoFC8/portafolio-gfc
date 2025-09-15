@@ -81,7 +81,8 @@ function portfolioData() {
                 galleryImages: [
                     'assets/images/imageVizuakizer1.png',
                 ],
-                github: 'https://github.com/GerardoFC8/landing-eloquent-visualizer'
+                github: 'https://github.com/GerardoFC8/landing-eloquent-visualizer',
+                online: 'https://gerardofc8.github.io/landing-eloquent-visualizer/'
             },
             {
                 title: 'Sistema de Gestión de Activos (ERP)',
@@ -94,7 +95,8 @@ function portfolioData() {
                     'assets/images/Vista cotizaciones agenda.png',
                     'https://placehold.co/600x400/1F2937/E5E7EB?text=MORE...',
                 ],
-                github: null
+                github: null,
+                online: null
             },
             {
                 title: 'Focus Control - Gestor Personal',
@@ -105,7 +107,8 @@ function portfolioData() {
                     'assets/images/FocusControl.png',
                     'https://placehold.co/800x600/1F2937/E5E7EB?text=Focus+Control+2'
                 ],
-                github: null
+                github: null,
+                online: null
             },
             {
                 title: 'VueCommerce PWA',
@@ -117,7 +120,8 @@ function portfolioData() {
                     'assets/images/VueCommerce-product.png',
                     'assets/images/VueCommerce-cart.png'
                 ],
-                github: 'https://github.com/GerardoFC8/vue-commerce-pwa'
+                github: 'https://github.com/GerardoFC8/vue-commerce-pwa',
+                online: 'https://vue-commerce-pwa.netlify.app/'
             },
             {
                 title: 'FocusCript AI',
@@ -147,7 +151,8 @@ Características Principales:
                     'assets/images/FocusCript-AI-5.png',
                     'assets/images/FocusCript-AI-6.png',
                 ],
-                github: null
+                github: null,
+                online: null
             }
         ],
 
